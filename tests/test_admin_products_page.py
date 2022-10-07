@@ -3,6 +3,7 @@ from data.product_data import ProductTestData
 from pages.adm_products_list_page import AdmProductsListPage
 
 
+@allure.feature('Список товаров в админке')
 @allure.title("Проверка добавления нового товара (заполняются только обязательные поля, вставляются рандомные значения)")
 def test_add_new_product(driver, url, admin_login):
 
@@ -18,6 +19,7 @@ def test_add_new_product(driver, url, admin_login):
     assert adm_products.is_new_product(product)
 
 
+@allure.feature('Список товаров в админке')
 @allure.title("Проверка удаления первого товара в списке товаров")
 def test_delete_first_product(driver, url, admin_login):
 

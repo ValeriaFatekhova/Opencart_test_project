@@ -13,6 +13,7 @@ from pages.catalog_page import CatalogPage
         "component/monitor",
     ]
 )
+@allure.feature('Каталог товаров')
 @allure.title("Проверка меню в каталоге товаров")
 def test_catalog_left_menu(driver, url, add_to_url):
     url = url + add_to_url
@@ -35,6 +36,7 @@ def test_catalog_left_menu(driver, url, add_to_url):
         "component/monitor",
     ]
 )
+@allure.feature('Каталог товаров')
 @allure.title("Проверка, что число товаров в каталоге совпадает с числом в меню")
 def test_catalog_content(driver, url, add_to_url):
     url = url + add_to_url
@@ -54,6 +56,7 @@ def test_catalog_content(driver, url, add_to_url):
         "component/monitor",
     ]
 )
+@allure.feature('Каталог товаров')
 @allure.title("Проверка наличия 'хлебных крошек' в каталоге товаров")
 def test_catalog_breadcrumbs(driver, url, add_to_url):
     url = url + add_to_url
@@ -69,6 +72,7 @@ def test_catalog_breadcrumbs(driver, url, add_to_url):
         "component/monitor",
     ]
 )
+@allure.feature('Каталог товаров')
 @allure.title("Проверка наличия кнопки 'продолжить' в пустом каталоге")
 def test_catalog_continue_button(driver, url, add_to_url):
     url = url + add_to_url
@@ -90,6 +94,7 @@ def test_catalog_continue_button(driver, url, add_to_url):
         "component/monitor",
     ]
 )
+@allure.feature('Каталог товаров')
 @allure.title("Проверка наличия кнопки для представления каталога в виде списка")
 def test_list_view_button(driver, url, add_to_url):
     url = url + add_to_url
