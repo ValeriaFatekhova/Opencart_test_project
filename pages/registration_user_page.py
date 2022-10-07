@@ -25,7 +25,7 @@ class RegistrationPage(BasePage):
         self.click(self.MY_ACCOUNT, self.TIMEOUT_FOR_ELEMENTS)
         self.click(self.REGISTRATION_ITEM, self.TIMEOUT_FOR_ELEMENTS)
 
-    @allure.step("Создаю пользователя со значениями {str(user)}")
+    @allure.step("Создаю пользователя со значениями {user}")
     def create_random_user(self, user):
         self.enter_text_in_field(self.FIRST_NAME_FIELD, self.TIMEOUT_FOR_ELEMENTS, user.first_name)
         self.enter_text_in_field(self.LAST_NAME_FIELD, self.TIMEOUT_FOR_ELEMENTS, user.last_name)

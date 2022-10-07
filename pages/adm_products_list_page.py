@@ -31,7 +31,7 @@ class AdmProductsListPage(BasePage):
     def open_product_data_tab(self):
         self.click(self.PRODUCT_DATA_TAB, self.TIMEOUT_FOR_ELEMENTS)
 
-    @allure.step("Создаю новый продукт со значениями: {str(product)}")
+    @allure.step("Создаю новый продукт со значениями: {product}")
     def create_new_product(self, product):
         self.click(self.ADD_PRODUCT_BUTTON, self.TIMEOUT_FOR_ELEMENTS)
         self.enter_text_in_field(self.PRODUCT_NAME, self.TIMEOUT_FOR_ELEMENTS, product.product_name)

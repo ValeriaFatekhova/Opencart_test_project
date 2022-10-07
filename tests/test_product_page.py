@@ -9,7 +9,7 @@ from pages.product_page import ProductPage
 @pytest.mark.parametrize(
     "add_to_url",
     [
-        "monitor/test",
+        "component/monitor/samsung-syncmaster-941bw",
         "laptop-notebook/hp-lp3065",
     ]
 )
@@ -25,7 +25,7 @@ def test_product_thumbnails(driver, url, add_to_url):
 @pytest.mark.parametrize(
     "add_to_url",
     [
-        "monitor/test",
+        "component/monitor/samsung-syncmaster-941bw",
         "laptop-notebook/hp-lp3065",
     ]
 )
@@ -41,7 +41,7 @@ def test_product_description(driver, url, add_to_url):
 @pytest.mark.parametrize(
     "add_to_url",
     [
-        "monitor/test",
+        "component/monitor/samsung-syncmaster-941bw",
         "laptop-notebook/hp-lp3065",
     ]
 )
@@ -57,7 +57,7 @@ def test_product_review(driver, url, add_to_url):
 @pytest.mark.parametrize(
     "add_to_url",
     [
-        "monitor/test",
+        "component/monitor/samsung-syncmaster-941bw",
         "laptop-notebook/hp-lp3065",
     ]
 )
@@ -73,7 +73,7 @@ def test_add_to_cart_button(driver, url, add_to_url):
 @pytest.mark.parametrize(
     "add_to_url",
     [
-        "monitor/test",
+        "component/monitor/samsung-syncmaster-941bw",
         "laptop-notebook/hp-lp3065",
     ]
 )

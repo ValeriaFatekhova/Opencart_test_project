@@ -1,4 +1,5 @@
 import allure
+from allure_commons.types import AttachmentType
 from selenium.common import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -18,6 +19,7 @@ class BasePage:
         try:
             return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
         except TimeoutException:
+            allure.attach(self.driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
             raise AssertionError(f"Element {locator} can't be found")
 
     @allure.step("Поиск элементов {locator}")
@@ -25,6 +27,7 @@ class BasePage:
         try:
             return WebDriverWait(self.driver, timeout).until(EC.visibility_of_all_elements_located(locator))
         except TimeoutException:
+            allure.attach(self.driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
             raise AssertionError(f"Elements {locator} can't be found")
 
     @allure.step("Получаю ссылку элемента {locator}")
@@ -37,6 +40,7 @@ class BasePage:
         try:
             return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator)).text
         except TimeoutException:
+            allure.attach(self.driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
             raise AssertionError(f"Elements {locator} can't be found")
 
     @allure.step("Получаю текст элемента {element}")
@@ -48,6 +52,7 @@ class BasePage:
         try:
             WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator)).click()
         except TimeoutException:
+            allure.attach(self.driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
             raise AssertionError(f"Elements {locator} can't be found")
 
     @allure.step("Выполняю клик по элементу {element}")
@@ -60,6 +65,7 @@ class BasePage:
             field = WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
             field.send_keys(text)
         except TimeoutException:
+            allure.attach(self.driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
             raise AssertionError(f"Elements {locator} can't be found")
 
     @allure.step("Нажимаю 'ОК' в окошке аллерта")
@@ -67,6 +73,7 @@ class BasePage:
         try:
             alert = WebDriverWait(self.driver, timeout).until(EC.alert_is_present())
         except TimeoutException:
+            allure.attach(self.driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
             raise AssertionError(f"Alert window is not presented")
         alert.accept()
 
