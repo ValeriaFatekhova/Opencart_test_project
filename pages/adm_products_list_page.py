@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
@@ -22,6 +23,7 @@ class AdmProductsListPage(BasePage):
 
     TIMEOUT_FOR_ELEMENTS = 3
 
+    @allure.step("Открываю список продуктов в админке")
     def open_adm_products_list_page(self):
         self.click(self.CATALOG_MENU, self.TIMEOUT_FOR_ELEMENTS)
         self.click(self.PRODUCTS_MENU, self.TIMEOUT_FOR_ELEMENTS)
@@ -29,6 +31,7 @@ class AdmProductsListPage(BasePage):
     def open_product_data_tab(self):
         self.click(self.PRODUCT_DATA_TAB, self.TIMEOUT_FOR_ELEMENTS)
 
+    @allure.step("Создаю новый продукт со значениями: {str(product)}")
     def create_new_product(self, product):
         self.click(self.ADD_PRODUCT_BUTTON, self.TIMEOUT_FOR_ELEMENTS)
         self.enter_text_in_field(self.PRODUCT_NAME, self.TIMEOUT_FOR_ELEMENTS, product.product_name)
@@ -39,6 +42,7 @@ class AdmProductsListPage(BasePage):
         self.enter_text_in_field(self.PRODUCT_PRICE, self.TIMEOUT_FOR_ELEMENTS, product.price)
         self.click(self.SAVE_PRODUCT_BUTTON, self.TIMEOUT_FOR_ELEMENTS)
 
+    @allure.step("Проверяю, есть ли созданный продукт в списке")
     def is_new_product(self, product):
         names = self.find_elements(self.PRODUCT_NAMES_LIST, self.TIMEOUT_FOR_ELEMENTS)
         count_names = 0
@@ -51,11 +55,13 @@ class AdmProductsListPage(BasePage):
         else:
             return False
 
+    @allure.step("Получаю общее число продуктов в списке")
     def get_num_of_products(self):
         temp = self.get_text(self.NUM_OF_PRODUCTS, self.TIMEOUT_FOR_ELEMENTS)
         num = int(temp.split()[5])
         return num
 
+    @allure.step("Удаляю первый продукт в списке")
     def delete_first_product(self):
         checkboxes = self.find_elements(self.PRODUCTS_CHECKBOXES, self.TIMEOUT_FOR_ELEMENTS)
         self.click_element(checkboxes[0])

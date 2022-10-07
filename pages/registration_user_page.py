@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
@@ -18,11 +19,13 @@ class RegistrationPage(BasePage):
 
     TIMEOUT_FOR_ELEMENTS = 3
 
+    @allure.step("Открываю страницу регистрации пользователя")
     def open_registration_page(self, url):
         self.open_page(url)
         self.click(self.MY_ACCOUNT, self.TIMEOUT_FOR_ELEMENTS)
         self.click(self.REGISTRATION_ITEM, self.TIMEOUT_FOR_ELEMENTS)
 
+    @allure.step("Создаю пользователя со значениями {str(user)}")
     def create_random_user(self, user):
         self.enter_text_in_field(self.FIRST_NAME_FIELD, self.TIMEOUT_FOR_ELEMENTS, user.first_name)
         self.enter_text_in_field(self.LAST_NAME_FIELD, self.TIMEOUT_FOR_ELEMENTS, user.last_name)
