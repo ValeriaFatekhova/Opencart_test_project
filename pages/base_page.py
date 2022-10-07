@@ -3,6 +3,12 @@ from allure_commons.types import AttachmentType
 from selenium.common import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import logging.config
+from logging_settings import logger_config
+
+
+logging.config.dictConfig(logger_config)
+debug_logger = logging.getLogger('debug_logger')
 
 
 class BasePage:
@@ -12,6 +18,8 @@ class BasePage:
 
     @allure.step("Открываю url {url}")
     def open_page(self, url):
+        debug_logger.debug("Debug message")
+        debug_logger.error("Error message")
         self.driver.get(url)
 
     @allure.step("Поиск элемента {locator}")

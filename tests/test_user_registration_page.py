@@ -1,5 +1,4 @@
 import allure
-
 from data.users_data import UserTestData
 from pages.registration_user_page import RegistrationPage
 
