@@ -33,6 +33,8 @@ class AdmProductsListPage(BasePage):
 
     @allure.step("Создаю новый продукт со значениями: {product}")
     def create_new_product(self, product):
+        self.logger.debug("__________Creating product is started__________")
+        self.logger.debug(f"product parameters: {product}")
         self.click(self.ADD_PRODUCT_BUTTON, self.TIMEOUT_FOR_ELEMENTS)
         self.enter_text_in_field(self.PRODUCT_NAME, self.TIMEOUT_FOR_ELEMENTS, product.product_name)
         self.enter_text_in_field(self.PRODUCT_DESCRIPTION, self.TIMEOUT_FOR_ELEMENTS, product.description)
@@ -41,15 +43,18 @@ class AdmProductsListPage(BasePage):
         self.enter_text_in_field(self.PRODUCT_MODEL, self.TIMEOUT_FOR_ELEMENTS, product.model)
         self.enter_text_in_field(self.PRODUCT_PRICE, self.TIMEOUT_FOR_ELEMENTS, product.price)
         self.click(self.SAVE_PRODUCT_BUTTON, self.TIMEOUT_FOR_ELEMENTS)
+        self.logger.debug("__________Creating product is finished__________")
 
     @allure.step("Проверяю, есть ли созданный продукт в списке")
     def is_new_product(self, product):
+        self.logger.debug("__________Check created product is started__________")
         names = self.find_elements(self.PRODUCT_NAMES_LIST, self.TIMEOUT_FOR_ELEMENTS)
+        self.logger.debug(f"List of products: {names}")
         count_names = 0
         for name in names:
             if self.get_text_element(name) == product.product_name:
                 count_names += 1
-
+        self.logger.debug(f"count_names value: {count_names}")
         if count_names == 1:
             return True
         else:

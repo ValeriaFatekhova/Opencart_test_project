@@ -5,7 +5,7 @@ logger_config = {
 
     'formatters': {
         'log_format': {
-            'format': '{asctime} - {levelname} - {name} - {message}',
+            'format': '{asctime} - {levelname} - module: {module} - function: {funcName} - {message}',
             'style': '{'
         }
     },
@@ -21,16 +21,22 @@ logger_config = {
             'filename': "opencart_tests_log.log",
             'level': 'WARNING',
             'formatter': 'log_format'
-        }
+        },
+        # 'email': {
+        #     'class': 'logging.handlers.SMTPHandler',
+        #     'mailhost': '',
+        #     'fromaddr': '',
+        #     'toaddrs': '',
+        #     'credentials': '',
+        #     'subject': 'Houston, we have a problem',
+        #     'level': 'CRITICAL',
+        #     'formatter': 'log_format'
+        # },
     },
     'loggers': {
-        'debug_logger': {
+        'logger': {
             'level': 'DEBUG',
             'handlers': ['console', 'file']
         },
-        'app_logger': {
-            'level': 'WARNING',
-            'handlers': ['file']
-        }
     },
 }

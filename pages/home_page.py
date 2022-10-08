@@ -62,6 +62,7 @@ class HomePage(BasePage):
 
     @allure.step("Проверяю ссылку логотипа на домашней странице")
     def check_logo_link(self):
+        self.logger.debug(f"Logo link is: {self.get_element_link(self.LOGO_LINK, self.TIMEOUT_FOR_ELEMENTS)}")
         if self.get_element_link(self.LOGO_LINK, self.TIMEOUT_FOR_ELEMENTS) != self.HOME_PAGE_URL:
             raise AssertionError("Logo link is incorrect")
 

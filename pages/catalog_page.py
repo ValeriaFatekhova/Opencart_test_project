@@ -31,6 +31,7 @@ class CatalogPage(BasePage):
         texts = []
         for i in items:
             texts.append(self.get_text_element(i))
+        self.logger.debug(f"Active menu atems are: {texts}")
         return texts
 
     def is_catalog_empty(self):
