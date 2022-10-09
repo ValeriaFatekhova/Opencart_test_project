@@ -32,7 +32,7 @@ class HomePage(BasePage):
         ("MP3 Players", "http://localhost/mp3-players"),
     ]
 
-    HOME_PAGE_URL = "http://localhost/index.php?route=common/home"
+    HOME_PAGE_URL = "http://192.168.1.114:8081/index.php?route=common/home"
 
     TIMEOUT_FOR_ELEMENTS = 3
 

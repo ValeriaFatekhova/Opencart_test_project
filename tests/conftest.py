@@ -32,12 +32,12 @@ def driver(request):
         caps = {
             "browserName": _browser,
             # "screenResolution": "1280x720",
-            # "name": "Opencart",
-            # "selenoid:options": {
-            #     "enableVNC": vnc,
-            #     "enableVideo": videos,
-            #     "enableLog": logs
-            # },
+            "name": "Opencart Tests",
+            "selenoid:options": {
+                "enableVNC": True,
+                "enableVideo": False,
+                "enableLog": False
+            },
             # 'acceptSslCerts': True,
             # 'acceptInsecureCerts': True,
             # 'timeZone': 'Europe/Moscow',
