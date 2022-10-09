@@ -5,7 +5,7 @@ from pages.registration_user_page import RegistrationPage
 
 @allure.feature('Регистрация пользователя')
 @allure.title("Проверка регистрации нового пользователя")
-def test_add_new_user(driver, url, admin_login):
+def test_add_new_user(driver, url):
 
     """Тест проверяет добавление нового пользователя"""
 
