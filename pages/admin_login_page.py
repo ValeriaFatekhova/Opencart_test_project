@@ -14,7 +14,7 @@ class AdminLoginPage(BasePage):
 
     TIMEOUT_FOR_ELEMENTS = 3
     ADMIN_URL = "admin"
-    ADMIN_LINK = "http://localhost/admin/index.php?route=common/login"
+    ADMIN_LINK = "http://192.168.1.114:8081/admin/index.php?route=common/login"
 
     def open_admin_login_page(self, url):
         self.open_page(url+self.ADMIN_URL)

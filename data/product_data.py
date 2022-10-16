@@ -5,7 +5,7 @@ import string
 
 
 @dataclass
-class Product:
+class ModelProduct:
     product_name: str = None
     description: str = None
     meta_tag_title: str = None
@@ -38,7 +38,7 @@ class Product:
 class ProductTestData:
 
     def generate_random_product(self):
-        p = Product()
+        p = ModelProduct()
         p.product_name = "1" + ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
         p.description = ''.join(random.choices(string.ascii_lowercase + string.digits, k=100))
         p.meta_tag_title = ''.join(random.choices(string.ascii_lowercase + string.digits, k=20))
