@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
@@ -33,10 +34,12 @@ class AdminLoginPage(BasePage):
     def is_admin_logo(self):
         self.find_element(self.ADMIN_LOGO, self.TIMEOUT_FOR_ELEMENTS)
 
+    @allure.step("Проверяю ссылку логотипа в админке")
     def check_logo_link(self):
         if self.get_element_link(self.ADMIN_LOGO_LINK, self.TIMEOUT_FOR_ELEMENTS) != self.ADMIN_LINK:
             raise AssertionError("Admin Logo link is incorrect")
 
+    @allure.step("Логин в админку с параметрами: user {user}, password {password}")
     def login_to_admin(self, user, password):
         self.find_element(self.USER_NAME_FIELD, self.TIMEOUT_FOR_ELEMENTS).send_keys(user)
         self.find_element(self.PASSWORD_FIELD, self.TIMEOUT_FOR_ELEMENTS).send_keys(password)

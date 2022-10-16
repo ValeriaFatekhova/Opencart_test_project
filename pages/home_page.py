@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
@@ -59,19 +60,23 @@ class HomePage(BasePage):
     def is_companies(self):
         self.find_element(self.COMPANIES, self.TIMEOUT_FOR_ELEMENTS)
 
+    @allure.step("Проверяю ссылку логотипа на домашней странице")
     def check_logo_link(self):
+        self.logger.debug(f"Logo link is: {self.get_element_link(self.LOGO_LINK, self.TIMEOUT_FOR_ELEMENTS)}")
         if self.get_element_link(self.LOGO_LINK, self.TIMEOUT_FOR_ELEMENTS) != self.HOME_PAGE_URL:
             raise AssertionError("Logo link is incorrect")
 
     def get_menu_items(self):
         return self.find_elements(self.MENU_ITEMS, self.TIMEOUT_FOR_ELEMENTS)
 
+    @allure.step("Проверяю список элементов в меню")
     def check_menu_items(self, elements):
         for i in range(len(elements)):
             temp = (elements[i].text, elements[i].get_attribute("href"))
             if temp != self.MENU_LIST[i]:
                 raise AssertionError("Menu items are incorrect")
 
+    @allure.step("Меняю валюту на домашней странице")
     def change_currency(self, name):
         self.click(self.CURRENCY_BUTTON, self.TIMEOUT_FOR_ELEMENTS)
         if name == "EUR":
@@ -83,8 +88,10 @@ class HomePage(BasePage):
         else:
             raise AssertionError(f"Currency {name} is not presented")
 
+    @allure.step("Получаю итоговую сумму в корзине на домашней странице")
     def get_cart_total(self):
         return self.get_text(self.TOTAL_CART, self.TIMEOUT_FOR_ELEMENTS)
 
+    @allure.step("Получаю текущую валюту на домашней странице")
     def get_currency(self):
         return self.get_text(self.CURRENCY_VALUE, self.TIMEOUT_FOR_ELEMENTS)

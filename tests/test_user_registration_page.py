@@ -1,8 +1,11 @@
-from data.product_data import UserTestData
+import allure
+from data.users_data import UserTestData
 from pages.registration_user_page import RegistrationPage
 
 
-def test_add_new_product(driver, url, admin_login):
+@allure.feature('Регистрация пользователя')
+@allure.title("Проверка регистрации нового пользователя")
+def test_add_new_user(driver, url, admin_login):
 
     """Тест проверяет добавление нового пользователя"""
 

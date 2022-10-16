@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
@@ -24,11 +25,13 @@ class CatalogPage(BasePage):
     def is_catalog_content(self):
         self.find_element(self.CATALOG_CONTENT, self.TIMEOUT_FOR_ELEMENTS)
 
+    @allure.step("Получаю активный элемент меню")
     def get_active_menu_items(self):
         items = self.find_elements(self.ACTIVE_MENU_ITEMS, self.TIMEOUT_FOR_ELEMENTS)
         texts = []
         for i in items:
             texts.append(self.get_text_element(i))
+        self.logger.debug(f"Active menu atems are: {texts}")
         return texts
 
     def is_catalog_empty(self):

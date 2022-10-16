@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 
@@ -49,6 +50,7 @@ class UserLoginPage(BasePage):
     def is_right_menu(self):
         self.find_element(self.RIGHT_MENU, self.TIMEOUT_FOR_ELEMENTS)
 
+    @allure.step("Првоеряю правое меню на странице логина пользователя")
     def check_menu_items(self):
         elements = self.find_elements(self.MENU_ITEMS, self.TIMEOUT_FOR_ELEMENTS)
         for i in range(len(elements)):
